@@ -46,7 +46,7 @@ for (let i = 1; i <= squareNum; i++) {
 let squaresSelect = document.getElementsByClassName("square");
 let radice = Math.sqrt(squareNum);
 console.log(radice);
-for (let i = 0; i < prova.length; i++) {
+for (let i = 0; i < squaresSelect.length; i++) {
     squaresSelect[i].style.width = `calc(100% / ${radice})`;
     squaresSelect[i].style.height = `calc(100% / ${radice})`;
 }
