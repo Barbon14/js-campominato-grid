@@ -5,8 +5,9 @@
     margin: 0;
 }
 
-/* debug */
-#container {
+/* impostazioni griglia */
+#grid {
+    /* debug */
     background-color: black;
     width: 80%;
     margin: 0 auto;
@@ -14,9 +15,18 @@
     flex-wrap: wrap;
 }
 
+/* impostazioni quadrati */
 .square {
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* debug */
     width: 100px;
     height: 100px;
-    border: 1px solid white;
-    color: white;
+}
+
+.square.clicked-true {
+    background-color: white;
 }

@@ -6,32 +6,43 @@
 // Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro(o simili, l’importante è dare all’utente il feedback che ha scoperto una casella che rimarrà scoperta, con il numero relativo).
 
 // chiedo all'utente di scegliere la difficoltà
-let difficulty = parseInt(prompt(`Seleziona il livello di difficoltà:
+let difficultySet = parseInt(prompt(`Seleziona il livello di difficoltà:
 1 per facile
 2 per medio
 3 per difficile`));
-console.log(difficulty);
+console.log(difficultySet);
 
 // il numero dei quadrati varia in base alla difficoltà scelta
 // - difficulty == 1 , genero 100 quadrati
 // - difficulty == 2 , genero 81 quadrati
 // - difficulty == 3 , genero 49 quadrati
-if (difficulty === 1) {
-    difficulty = 100;
-} else if (difficulty === 2) {
-    difficulty = 81;
-} else if (difficulty === 3) {
-    difficulty = 49;
+let squreNum = 0;
+if (difficultySet === 1) {
+    squreNum = 100;
+} else if (difficultySet === 2) {
+    squreNum = 81;
+} else if (difficultySet === 3) {
+    squreNum = 49;
 }
-console.log(difficulty);
+console.log(squreNum);
 
 // genero in pagina i quadrati
-const squareCont = document.getElementById("container")
-for (let i = 1; i <= difficulty; i++) {
+const squareCont = document.getElementById("grid")
+for (let i = 1; i <= squreNum; i++) {
+
     let node = newElement ("div", "square");
-    node.innerHTML = i;
+
+    node.addEventListener ('click',
+        function () {
+            this.classList.add("clicked-true");
+            node.innerHTML = i;
+        }
+    );
+
     squareCont.append(node);
 }
+
+
 
 // funzioni
 function newElement (newElementTag, newElementClass) {
