@@ -16,19 +16,19 @@ console.log(difficultySet);
 // - difficulty == 1 , genero 100 quadrati
 // - difficulty == 2 , genero 81 quadrati
 // - difficulty == 3 , genero 49 quadrati
-let squreNum = 0;
+let squareNum = 0;
 if (difficultySet === 1) {
-    squreNum = 100;
+    squareNum = 100;
 } else if (difficultySet === 2) {
-    squreNum = 81;
+    squareNum = 81;
 } else if (difficultySet === 3) {
-    squreNum = 49;
+    squareNum = 49;
 }
-console.log(squreNum);
+console.log(squareNum);
 
 // genero in pagina i quadrati
 const squareCont = document.getElementById("grid")
-for (let i = 1; i <= squreNum; i++) {
+for (let i = 1; i <= squareNum; i++) {
 
     let node = newElement ("div", "square");
 
@@ -42,7 +42,14 @@ for (let i = 1; i <= squreNum; i++) {
     squareCont.append(node);
 }
 
-
+// modifico la dimensione dei quadrati per ottenere sempre una griglia uniforme
+let squaresSelect = document.getElementsByClassName("square");
+let radice = Math.sqrt(squareNum);
+console.log(radice);
+for (let i = 0; i < prova.length; i++) {
+    squaresSelect[i].style.width = `calc(100% / ${radice})`;
+    squaresSelect[i].style.height = `calc(100% / ${radice})`;
+}
 
 // funzioni
 function newElement (newElementTag, newElementClass) {
