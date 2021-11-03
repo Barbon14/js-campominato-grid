@@ -16,44 +16,41 @@ console.log(difficultySet);
 // - difficulty == 1 , genero 100 quadrati
 // - difficulty == 2 , genero 81 quadrati
 // - difficulty == 3 , genero 49 quadrati
-let squareNum = 0;
 if (difficultySet === 1) {
-    squareNum = 100;
+    generateGrid(100, "size-lvl-1")
 } else if (difficultySet === 2) {
-    squareNum = 81;
+    generateGrid(81, "size-lvl-2")
 } else if (difficultySet === 3) {
-    squareNum = 49;
-}
-console.log(squareNum);
-
-// genero in pagina i quadrati
-const squareCont = document.getElementById("grid")
-for (let i = 1; i <= squareNum; i++) {
-
-    let node = newElement ("div", "square");
-
-    node.addEventListener ('click',
-        function () {
-            this.classList.add("clicked-true");
-            node.innerHTML = i;
-        }
-    );
-
-    squareCont.append(node);
-}
-
-// modifico la dimensione dei quadrati per ottenere sempre una griglia uniforme
-let squaresSelect = document.getElementsByClassName("square");
-let radice = Math.sqrt(squareNum);
-console.log(radice);
-for (let i = 0; i < squaresSelect.length; i++) {
-    squaresSelect[i].style.width = `calc(100% / ${radice})`;
-    squaresSelect[i].style.height = `calc(100% / ${radice})`;
+    generateGrid(49, "size-lvl-3")
 }
 
 // funzioni
+
+// genera elemento html con una classe
 function newElement (newElementTag, newElementClass) {
     let element = document.createElement(newElementTag);
     element.classList.add(newElementClass);
     return element;
+}
+
+// genera la griglia in base al livello selezionato,
+// la dimensione dei quadrati varia in base alla quantità generata
+function generateGrid(squareNum, squareSize) {
+    const squareCont = document.getElementById("grid")
+    for (let i = 1; i <= squareNum; i++) {
+
+        let node = newElement("div", "square");
+        node.classList.add(squareSize);
+
+        // rendo ogni quadrato cliccabile
+        node.addEventListener('click',
+
+            function () {
+                this.classList.add("clicked-true");
+                node.innerHTML = i;
+            }
+        );
+
+        squareCont.append(node);
+    }
 }

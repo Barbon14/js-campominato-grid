@@ -31,3 +31,18 @@ body {
 .square.clicked-true {
     background-color: white;
 }
+
+.size-lvl-1 {
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+}
+
+.size-lvl-2 {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.size-lvl-3 {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
